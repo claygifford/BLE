@@ -1,0 +1,384 @@
+<script>
+    $('#bid-wz').bootstrapWizard({
+        tabClass        : 'wz-classic',
+        nextSelector    : '.next',
+        previousSelector    : '.previous',
+        onTabClick: function(tab, navigation, index) {
+            return false;
+        },
+        onInit : function(){
+            
+        },
+        onNext: function(tab, navigation, index) {
+
+            switch(index) {
+                case 1:
+                    var element = $('#bid-wz');
+                    var scope = angular.element(element).scope();
+                    if (!scope.validate())
+                        return false;
+                        break;
+                case 2:
+                    var element = $('#bid-wz');
+                    var scope = angular.element(element).scope();
+                    if (!scope.validate())
+                        return false;
+                        break;
+                case 3:
+                    break;
+                case 4:
+                    break;                  
+                default:
+            }
+        },
+        onTabShow: function(tab, navigation, index) {
+            var $total = navigation.find('li').length;
+            var $current = index+1;
+            var $percent = ($current/$total) * 100;
+            var wdt = 100/$total;
+            var lft = wdt*index;
+            $('#bid-wz').find('.progress-bar').css({width:$percent+'%'});
+
+            switch($current) {
+                case 1:
+                    var next = $('#bid-wz').find('.next');
+                    next.show();
+                    next.text('Next');
+                    $('#bid-wz').find('.previous').show();
+                    $('#bid-wz').find('.finish').hide();
+                    $('#bid-wz').find('.cancel').show();
+                    $('#bid-wz').find('.complete').hide();
+                    break;
+                case 2:
+                    var next = $('#bid-wz').find('.next');
+                    next.show();
+                    next.text('Go to Summary');
+                    $('#bid-wz').find('.previous').show();
+                    $('#bid-wz').find('.finish').hide();
+                    $('#bid-wz').find('.cancel').show();
+                    $('#bid-wz').find('.complete').hide();
+                    break;
+                case 3:
+                    var element = $('#bid-wz');
+                    var scope = angular.element(element).scope();
+                    scope.setLocation();
+                    $('#bid-wz').find('.next').hide();
+                    $('#bid-wz').find('.previous').show();
+                    $('#bid-wz').find('.finish').show();
+                    $('#bid-wz').find('.cancel').show();
+                    $('#bid-wz').find('.complete').hide();
+                    break;
+                case 4:
+                    $('#bid-wz').find('.next').hide();
+                    $('#bid-wz').find('.previous').hide();
+                    $('#bid-wz').find('.finish').hide();
+                    $('#bid-wz').find('.cancel').hide();
+                    $('#bid-wz').find('.complete').show();
+                    break;                  
+                default:
+            }
+        },
+        onFinish: function(tab, navigation, index) {
+            var element = $('#bid-wz');
+            var scope = angular.element(element).scope();
+            scope.submitListing();
+        }
+    });
+</script>   
+
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h3 class="modal-title">Place Bid</h3>
+</div>
+<div class="modal-body" style="padding:0;">
+    <div id="bid-wz">
+        <ul class="wz-nav-off wz-icon-inline">
+            <li class="col-xs-3">
+                <a data-toggle="tab" href="#bid-wz-tab1">
+                    <span class="icon-wrap icon-wrap-xs bg-danger" style="color: white;"><i class="fa fa-info"></i></span>
+                    <p class="text-thin">Terms and Conditions</p>
+                </a>
+            </li>
+            <li class="col-xs-3">
+                <a data-toggle="tab" href="#bid-wz-tab2">
+                    <span class="icon-wrap icon-wrap-xs bg-warning" style="color: white;"><i class="fa fa-gavel"></i></span>
+                    <p class="text-thin">Bid</p>
+                </a>
+            </li>
+            <li class="col-xs-3">
+                <a data-toggle="tab" href="#bid-wz-tab3">
+                    <span class="icon-wrap icon-wrap-xs bg-primary" style="color: white;"><i class="fa fa-file-text-o"></i></span>
+                    <p class="text-thin">Summary</p>                                            
+                </a>
+            </li>
+            <li class="col-xs-3">
+                <a data-toggle="tab" href="#bid-wz-tab4">
+                    <span class="icon-wrap icon-wrap-xs bg-success" style="color: white;"><i class="fa fa-check-square"></i></span>
+                    <p class="text-thin">Finish</p>                                         
+                </a>
+            </li>
+        </ul>
+
+        <div class="progress progress-xs">
+            <div class="progress-bar progress-bar-blue"></div>
+        </div>
+        <form id="bid-form" class="form-horizontal mar-top" style="min-height: 300px;">
+            <div class="tab-content">
+                <div id="bid-wz-tab1" class="tab-pane">
+                    
+                    <div class="form-group">
+                        <label class="col-xs-3 control-label">Terms and Conditions</label>
+                        <div class="col-xs-8">
+                            <div style="border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;">                                              
+                                <p>Natum oportere et qui, vis graeco tincidunt instructior an, autem elitr noster per et. Mea eu mundi qualisque. Quo nemore nusquam vituperata et, mea ut abhorreant deseruisse, cu nostrud postulant dissentias qui. Postea tincidunt vel eu.</p>
+                                <p>Ad eos alia inermis nominavi, eum nibh docendi definitionem no. Ius eu stet mucius nonumes, no mea facilis philosophia necessitatibus. Te eam vidit iisque legendos, vero meliore deserunt ius ea. An qui inimicus inciderint.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <div class="col-xs-6 col-xs-offset-3">
+                            <div>
+                                <label>
+                                    <input type="checkbox" name="agreeToTerms" value="agree" ng-model="bid.agreeToTerms"/> I agree to these terms and conditions
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div id="bid-wz-tab2" class="tab-pane fade">
+                    <div style="max-height: 600px; overflow-y: auto;">
+                        <div class="panel-body">
+                            <div class="home-profile-header">
+                                Bidder Information              
+                            </div>
+                            <hr class="hr-sm">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Name</label>
+                                <div class="col-md-7"><input type="text" placeholder="Name" name="name" class="form-control" ng-model="account.Name"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Title</label>
+                                <div class="col-md-7"><input type="text" placeholder="Title" name="title" class="form-control" ng-model="account.Title"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Company</label>
+                                <div class="col-md-7"><input type="text" placeholder="Company" name="company" class="form-control" ng-model="account.Company"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Phone Number</label>
+                                <div class="col-md-7"><input type="text" placeholder="Phone Number" name="phoneNumber" class="form-control" ng-model="account.PhoneNumber"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Email Address</label>
+                                <div class="col-md-7"><input type="text" placeholder="Email" name="email" class="form-control" ng-model="account.Email"></div>
+                            </div>                  
+                        </div>
+                        <div class="panel-body">
+                            <div class="home-profile-header">
+                                Facility Information            
+                            </div>
+                            <hr class="hr-sm">
+                            <div class="form-group">
+                                <label class="col-md-offset-2"><input type="radio" ng-model="location.Type" value="New Construction"> New Construction</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-offset-2"><input type="radio" ng-model="location.Type" value="Existing Facility"> Existing Facility</label>
+                            </div>
+                            <div ng-show="location.Type == 'New Construction'">
+                                <p class="col-md-offset-2">We understand you may not have all the information listed below.</p>
+                                <p class="col-md-offset-2">In order to increase your chances of having your bid accepted, please be as accurate as possible.</p>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Address</label>
+                                    <div class="col-md-7"><input type="text" placeholder="Address" name="newAddress" class="form-control" ng-model="newLocation.Address"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">City</label>
+                                    <div class="col-md-7"><input type="text" placeholder="City" name="newCity" class="form-control" ng-model="newLocation.City"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">State</label>
+                                    <div class="col-md-7"><input type="text" name="newState" placeholder="State" ng-model="newLocation.StateObject" uib-typeahead="state as state.name for state in filter.newStates | filter:$viewValue | limitTo:8" class="form-control"></div>                                                        
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Zip</label>
+                                    <div class="col-md-7"><input type="text" placeholder="Zip" name="newZip" class="form-control" ng-model="newLocation.Zip"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">County</label>
+                                    <div class="col-md-7"><input type="text" name="newCounty" placeholder="County" ng-model="newLocation.CountyObject" uib-typeahead="county as county.name for county in filter.newCounties | filter:$viewValue | limitTo:8" class="form-control"></div>
+                                </div>
+                            </div>
+                            <div ng-hide="location.Type == 'New Construction'">
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Name of Facility</label>
+                                    <div class="col-md-7">
+                                        <input type="text" ng-model="existingLocation.Facility" name="existingName" placeholder="Name" uib-typeahead="company as company.Display for company in getCompanies($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+                                        <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                                        <div ng-show="noResults">
+                                            <i class="glyphicon glyphicon-remove"></i> No Results Found
+                                        </div> 
+                                    </div>                           
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Address</label>
+                                    <div class="col-md-7"><input type="text" placeholder="Address" name="existingAddress" class="form-control" ng-model="existingLocation.Address"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">City</label>
+                                    <div class="col-md-7"><input type="text" placeholder="City" name="existingCity" class="form-control" ng-model="existingLocation.City"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">State</label>
+                                    <div class="col-md-7"><input type="text" placeholder="State" name="existingState" ng-model="existingLocation.StateObject" uib-typeahead="state as state.name for state in filter.existingStates | filter:$viewValue | limitTo:8" class="form-control"></div>                                                        
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Zip</label>
+                                    <div class="col-md-7"><input type="text" placeholder="Zip" name="existingZip" class="form-control" ng-model="existingLocation.Zip"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">County</label>
+                                    <div class="col-md-7"><input type="text" placeholder="County" name="existingCounty" ng-model="existingLocation.CountyObject" uib-typeahead="county as county.name for county in filter.existingCounties | filter:$viewValue | limitTo:8" class="form-control"></div>
+                                </div>                       
+                            </div> 
+                        </div>
+                        <div class="panel-body">
+                            <div class="home-profile-header">
+                                Bid Details             
+                            </div>
+                            <hr class="hr-sm">
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Number of Bed Licenses</label>
+                                <div class="col-md-7"><input type="text" placeholder="Number of Bed Licenses" name="numberOfBeds" class="form-control" ng-model="bid.NumberOfBeds"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Price/Bed</label>
+                                <div class="col-md-7"><input type="text" placeholder="Price/Bed" name="pricePerBed" class="form-control" ng-model="bid.PricePerBed"></div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Comments to Seller</label>
+                                <div class="col-md-7"><input type="text" placeholder="Comments to Seller" class="form-control" ng-model="bid.Comments"></div>
+                            </div>              
+                        </div>                            
+                    </div>                          
+                </div>
+
+                <div id="bid-wz-tab3" class="tab-pane">
+                    <div style="display: flex;">
+                        <div class="panel-body" style="height: 100%; width: 50%;">
+                            <div class="home-profile-header">
+                                Bid Summary              
+                            </div>
+                            <hr class="hr-sm">
+                            <p class="text-semibold">The information listed below will be provided to Seller. Please review.</p>
+
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Company</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{account.Company}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Where are these licenses going?</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.Type}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Address</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.Address}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">City</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.City}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">State</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.State}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Zip</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.Zip}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">County</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{location.County}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Number of Bed Licenses</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{bid.NumberOfBeds | number:0}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Price/Bed</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{bid.PricePerBed | currency}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Gross Amount to Seller</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{properties.Price | currency}}</b></div>
+                            </div> 
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Comments to Seller</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{bid.Comments}}</b></div>
+                            </div>   
+                        </div>
+                        <div class="panel-body" style="height: 100%; width: 50%;">
+                            <div class="home-profile-header">
+                                Estimated Cost to Buyer             
+                            </div>
+                            <hr class="hr-sm">
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Number of Bed Licenses</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{bid.NumberOfBeds | number:0}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Bid Amount</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{bid.PricePerBed | currency}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Total Bid Price</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{properties.Price | currency}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Bed License Exchange Fee (5%)</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{properties.LbeCommission | currency}}</b></div>
+                            </div>
+                            <div class="row">
+                                <label class="col-lg-5" style="text-align: right;">Total Amount Due*</label>
+                                <div class="col-lg-6" style="text-align: left;"><b>{{properties.TotalPurchasePrice | currency}}</b></div>
+                                <div class="col-lg-12" style="text-align: left;">*Individual State fees, legal fees and closing costs are likely to be added to this amount and should be addressed outside of Bed License Exchange.</div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;" ng-show="actions.isBusy"> 
+                        <div style="display: flex; align-items: center; justify-content: center; height: 200px;">
+                            <i class="fa fa-cog fa-3x"  ng-class="{'fa-spin' : actions.isBusy}"></i>
+                            <h3 style="margin-left: 10px; padding-bottom:10px;">Creating Bid...</h3>
+                        </div>                                                                              
+                    </div>
+                </div>
+
+                <div id="bid-wz-tab4" class="tab-pane">
+                    <div class="row">
+                        <h4 class="col-md-8 col-md-offset-2">Thank you for your bid!</h4>
+                    </div>
+                    <div class="row">
+                        <p class="col-md-8 col-md-offset-2">Your bid has been submitted to the Seller.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-md-8 col-md-offset-2">You will be contacted if the Seller is interested in moving forward with your bid.</p>
+                    </div>
+                    <div class="row">
+                        <p class="col-md-8 col-md-offset-2">Please check the status of your bid under <a ui-sref="app.profile.bids">My Account</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="panel-footer text-right">
+            <div class="box-inline">
+                <button type="button" class="previous btn btn-primary">Previous</button>
+                <button type="button" class="next btn btn-primary">Next</button>                                            
+                <button type="button" class="finish btn btn-success" ng-click="submit()">Submit</button>
+                <button type="button" class="cancel btn btn-primary" ng-click="cancel()">Cancel</button>
+                <button type="button" class="complete btn btn-primary" ng-click="close()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

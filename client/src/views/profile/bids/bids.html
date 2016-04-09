@@ -1,0 +1,39 @@
+<div style="background-color: #e7ebee; position: relative; height:100%;">
+
+	<div id="page-title">
+		<h1 class="page-header text-overflow">My Bids</h1>
+	</div>
+	<div id="page-content" style="height: calc(100% - 60px);">
+		
+		<div class="panel panel-default panel-left" style="height:100%;">
+			<div class="panel-body" style="height: calc(100% - 20px);">
+				<div class="row">
+					<div class="col-sm-7">
+	
+						<button id="demo-mail-ref-btn" data-toggle="panel-overlay" data-target="#demo-email-list" class="btn btn-default" type="button">
+							<i class="fa fa-refresh"></i>
+						</button>
+						<i class="fa fa-cog" ng-show="actions.isBusy" ng-class="{'fa-spin' : actions.isBusy}" style="margin-left: 5px; vertical-align: middle;" ></i>
+					</div>
+					<hr class="hr-sm visible-xs">
+				</div>
+				<hr class="hr-sm">
+
+				<ul class="mail-list" style="height: calc(100% - 20px); overflow-y: auto;">
+					<li class="mail-list-unread" style="cursor: pointer; display: flex; flex-wrap: nowrap; align-items: center;" ng-repeat="bid in bids track by bid.Id" ng-click="bidDetails(bid)">
+						<div class="label label-table" ng-class="getStatusClass(bid)">{{bid.BuyerStatus}}</div>						
+						<div class="mail-time" style="margin-left: 20px;">{{bid.CreatedOn | date:'medium'}}</div>
+						<div style="margin-left: 20px;" ng-if="bid.Status != 10">{{bid.NumberOfBeds | number:0}} | {{bid.PricePerBed | currency}}</div>
+						<div style="margin-left: 20px;" ng-if="bid.Status != 10">{{bid.County}}, {{bid.State}}</div>
+						<div style="margin-left: auto;" ng-if="bid.Status != 8">								
+							<button type="button" class="btn btn-primary" ng-click="retractBid(bid);$event.stopPropagation()">Retract This Bid</button>
+						</div>	
+					</li>
+				</ul>
+			</div>
+		
+			<div class="panel-footer clearfix">
+			</div>
+		</div>					
+	</div>
+</div>

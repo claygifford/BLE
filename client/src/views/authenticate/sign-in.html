@@ -1,0 +1,86 @@
+<script>
+	$('#sign-in').formValidation({
+        framework: 'bootstrap',
+        live: 'disabled',
+        icon: {
+        	valid: 'fa fa-check-circle fa-lg text-success',
+			invalid: 'fa fa-times-circle fa-lg',
+			validating: 'fa fa-refresh'
+        },
+		fields: {
+			username: {
+				validators: {
+					notEmpty: {
+						message: 'The Username is required'
+					},
+					blank: {}
+				}
+			},
+			password: {
+				validators: {
+					notEmpty: {
+						message: 'The Password is required'
+					}
+				}
+			}
+		}
+	})
+	.on('err.field.fv', function(e, data) {
+ 		if (data.fv.getSubmitButton()) {
+ 			data.fv.disableSubmitButtons(false);
+ 	    }
+    })
+    .on('success.field.fv', function(e, data) {
+ 	    if (data.fv.getSubmitButton()) {
+    		data.fv.disableSubmitButtons(false);
+ 		}
+    })
+	.on('success.form.fv', function(e) {
+        e.preventDefault();
+        var element = $('#sign-in');
+        var scope = angular.element(element).scope();
+        var fv = element.data('formValidation');
+        scope.signIn(fv);
+    });
+
+</script>
+
+<div class="sign-container">
+	
+	<div class="sign-header">
+		<h1>	
+			<span class="brand-title">Bed License Exchange <span class="text-thin">Sign In</span></span>
+		</h1>
+	</div>
+	<div class="card">
+		<div class="panel-body">
+			<h3 class="sign-content">Sign in to your Account</h3>
+			<form id="sign-in">
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-user"></i></div>
+						<input type="text" class="form-control" placeholder="Username" name="username" ng-model="account.username">
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-addon"><i class="fa fa-key"></i></div>
+						<input type="password" class="form-control" placeholder="Password" name="password" ng-model="account.password">
+					</div>
+				</div>
+				<div class="form-group has-feedback has-error">
+			        <div class="input-group">
+			            <div class="help-block">{{actions.message}}</div>
+			        </div>
+			    </div>
+				<button class="btn btn-success btn-lg btn-block" type="submit">
+					Sign In <i class="fa fa-cog" ng-show="actions.isBusy" ng-class="{'fa-spin' : actions.isBusy}"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+	<div class="sign-footer">
+		<a style="cursor: pointer;" class="btn-link mar-rgt" ng-click="goto('app.password-reminder')">Forgot password ?</a>
+		<a style="cursor: pointer;" class="btn-link mar-lft" ng-click="goto('app.register')">Create a new account</a>
+	</div>
+</div>

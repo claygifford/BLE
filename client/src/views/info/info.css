@@ -1,0 +1,33 @@
+.info-container 
+{
+	margin-top: -70px;
+	
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;
+	display:flex;
+
+	-ms-flex-justify-content: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+
+	-ms-flex-align-items: center;
+	-webkit-align-items: center;
+	align-items: center;
+
+	-ms-flex-direction: column; 
+	-webkit-flex-direction: column; 
+	flex-direction: column; 
+
+	height:100%;
+}
+
+a.info-link:link, a.info-link:visited { 
+    color: #F7941E;
+    text-decoration: underline;
+}
+
+a.info-link:link:active, a.info-link:visited:active { 
+    color: #F7941E;
+}

@@ -1,0 +1,189 @@
+<div class="buy-container">
+	<div class="form-inline" style="position: absolute; top: 5px; left:5px; z-index: 999;">
+		<div class="form-group">
+			<div class="input-group" style="vertical-align:top;">
+				<button data-toggle="dropdown" ng-click="handleMenuClick()" class="btn btn-primary dropdown-toggle" type="button">
+					State<i class="dropdown-caret fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-menu" ng-click="$event.stopPropagation();">
+					<div class="panel" style="margin-bottom: 0px;">
+						<div class="panel-heading">
+							<h3 class="panel-title">State</h3>
+						</div>
+						<div class="panel-body" style="padding-top: 10px;">
+							<div style="display: flex; padding-bottom: 10px;">
+								<button class="btn btn-primary btn-labeled fa fa-check" style="margin-right: 5px;" ng-click="toggleStates(true)">Select All</button>
+								<button class="btn btn-primary btn-labeled fa fa-times" ng-click="toggleStates(false)">Unselect All</button>
+							</div>
+							<div style="display: flex; padding-bottom: 10px;">
+							<input type="text" placeholder="Search" class="form-control" ng-model='stateFilter'/><button class="btn btn-primary" ng-click='filter()'>Filter</button>
+							</div>
+							<ui-virtual-list class="ui-virtual-list" ui-data-provider="states" ui-on-select="onStateSelect(option)" ng-model="selectedOption"></ui-virtual-list>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="input-group" style="vertical-align:top;">
+				<button data-toggle="dropdown" ng-click="handleMenuClick()" class="btn btn-primary dropdown-toggle" type="button">
+					County<i class="dropdown-caret fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-menu" ng-click="$event.stopPropagation();">
+					<div class="panel" style="margin-bottom: 0px;">
+						<div class="panel-heading">
+							<h3 class="panel-title">County</h3>
+						</div>
+						<div class="panel-body" style="padding-top: 10px;">
+							<div style="display: flex; padding-bottom: 10px;">
+								<button class="btn btn-primary btn-labeled fa fa-check" style="margin-right: 5px;" ng-click="toggleCounties(true)">Select All</button>
+								<button class="btn btn-primary btn-labeled fa fa-times" ng-click="toggleCounties(false)">Unselect All</button>
+							</div>
+							<div style="display: flex; padding-bottom: 10px;">
+							<input type="text" placeholder="Search" class="form-control" ng-model='countyFilter'/><button class="btn btn-primary" ng-click='filter()'>Filter</button>
+							</div>
+							<county-list class="county-list" ui-data-provider="counties" ui-on-select="onCountySelect(option)" ng-model="selectedOption"></county-list>
+						</div>
+					</div>
+				</div>
+			</div>			
+			<div class="input-group" style="vertical-align:top;">
+				<button data-toggle="dropdown" ng-click="handleMenuClick()" class="btn btn-primary dropdown-toggle" type="button">
+					Price/Bed<i class="dropdown-caret fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-menu" ng-click="$event.stopPropagation();">
+					<div class="panel" style="margin-bottom: 0px;">
+						<div class="panel-heading">
+							<h3 class="panel-title">Price/Bed</h3>
+						</div>
+						<div class="panel-body">
+							<div class="input-group">
+								<form class="form-inline" style="width:220px;">
+									<div class="form-group">
+										<input type="text" placeholder="Min" class="form-control" ng-change="getListings()" ng-model="filter.pricePerBed.Min" style="Width:100px;">
+									</div>
+									<div class="form-group">
+										-
+									</div>
+									<div class="form-group">
+										<input type="text" placeholder="Max" class="form-control" ng-change="getListings()" ng-model="filter.pricePerBed.Max" style="Width:100px;">
+									</div>
+								</form>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="input-group" style="vertical-align:top;">
+				<button data-toggle="dropdown" ng-click="handleMenuClick()" class="btn btn-primary dropdown-toggle" type="button">
+					Real Estate<i class="dropdown-caret fa fa-caret-down"></i>
+				</button>
+				<div class="dropdown-menu" ng-click="$event.stopPropagation();">
+					<div class="panel" style="margin-bottom: 0px; min-width: 300px;">
+						<div class="panel-heading">
+							<h3 class="panel-title">Real Estate</h3>
+						</div>
+						<div class="panel-body" style="padding:15px;">
+							<button class="btn btn-primary btn-labeled fa fa-check" ng-click="toggleRealEstate(true)">Select All</button>
+							<button class="btn btn-primary btn-labeled fa fa-times" ng-click="toggleRealEstate(false)">Unselect All</button>
+							<label style="padding-bottom:12px; padding-top:12px;" ng-repeat="item in filter.realEstate">
+								<input type="checkbox" ng-model="item.isChecked" ng-change="getListings()"> {{item.label}}</input>
+							</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="input-group" style="vertical-align:top;">
+				<button data-toggle="dropdown" ng-click="saveSearch()" class="btn btn-primary dropdown-toggle" type="button">
+					Save This Search
+				</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="buy-map">
+		<lbx-map-search items="filter.selectedLocations.items" countyclicked="onCountyClick(county)"></lbx-map-search>
+<!-- 		<div style="position: relative;" ng-hide="actions.showPlaceBid">
+			<div style="position: absolute; bottom: 5px; right:5px; z-index: 999;">
+				<div class="btn-group-vertical">
+					<button class="btn btn-default" ng-click="testing1()"><i class="fa fa-plus"></i></button>
+					<button class="btn btn-default" ng-click="testing2()"><i class="fa fa-minus"></i></button>					
+				</div>
+			</div>
+		</div>
+		<lbx-place-bid ng-show="actions.showPlaceBid" closeclicked="onCloseClicked()"></lbx-place-bid> -->
+	</div>
+	<!-- <lbx-map-search class="buy-map" items="selectedLocation.items" countyclicked="onCountyClick(county)"></lbx-map-search> -->
+
+	<div class="buy-listings">
+		<div class="panel" style="margin:0; height: 100%;">
+			<div style="height: 90px;">
+				<div style="padding: 5px;">
+					<div class="dropdown pull-right">
+						<button data-toggle="dropdown" ng-click="handleMenuClick()" class="btn btn-primary dropdown-toggle" type="button">
+						Saved Searches<i class="dropdown-caret fa fa-caret-down"></i>
+						</button>
+						<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default" >
+
+						<div class="pad-all bord-btm">
+							<p class="text-lg text-muted text-thin mar-btm">Saved Searches</p>									
+						</div>
+						<ul class="head-list">
+							<li>
+								<a ng-click="goto('app.profile.home')" class="clickable">
+									<i class="fa fa-fw fa-lg fa-user"></i> Profile
+								</a>
+							</li>							
+							<li>
+								<a ng-click="goto('app.profile.listings')" class="clickable">
+									<span class="badge badge-primary pull-right">{{ClientContext.Stats.Listings}}</span>
+									<i class="fa fa-fw fa-lg fa-building"></i> My Listings
+								</a>
+							</li>
+							<li>
+								<a ng-click="goto('app.profile.bids')" class="clickable">
+									<span class="badge badge-primary pull-right">{{ClientContext.Stats.Bids}}</span>
+									<i class="fa fa-fw fa-lg fa-file-text"></i> My Bids
+								</a>
+							</li>							
+							<li>
+								<a ng-click="goto('app.profile.settings')" class="clickable">
+									<i class="fa fa-fw fa-lg fa-gear"></i> Settings
+								</a>
+							</li>
+						</ul>
+						<div class="pad-all text-right">
+							
+						</div>
+					</div>
+<!-- 
+						<div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default" >
+							<div class="pad-all bord-btm">
+								<p class="text-lg text-muted text-thin mar-btm">Saved Searches</p>									
+							</div>
+							<div ng-repeat="search in searches">
+								<a ng-click="goto('app.profile.home')" class="clickable">
+									<i class="fa fa-fw fa-lg fa-user"></i> {{search.Name}}
+								</a>
+							</ul>
+						</div> -->
+					</div>
+					<button class="btn btn-default" style="margin-left: auto;" type="button" ng-click="sellBed()">Sell Bed</button>
+				</div>
+				<div class="buy-listings-header">
+					<h3 class="panel-title">Listings</h3>
+					<i class="fa fa-cog fa-spin" ng-show="actions.isBusy"></i>
+				</div>
+			</div>
+			<div class="list-group" style="background-color: white; height: calc(100% - 90px);overflow-y: auto;">
+				<a class="list-group-item" ng-repeat="listing in filter.listings">
+					<h4 class="list-group-item-heading">{{listing.County}}, {{listing.State}}</h4>
+					<i class="fa fa-building pull-right" ng-show="listing.RealEstateIncluded"></i>
+					<h5>{{listing.NumberOfBeds | number:0}} beds • {{listing.AskingPricePerBed | currency}} per bed</h5>
+					<button type="button" class="btn btn-primary" ng-click="placeBid(listing)">Place bid</button>
+					<button type="button" class="btn btn-default" ng-show="listing.RealEstateIncluded" ng-click="requestInformation(listing)">Request Information</button>
+				</a>
+			</div>
+		</div>
+	</div>
+    
+</div>

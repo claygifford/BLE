@@ -1,0 +1,10 @@
+<div>
+	<span ng-bind-html="$highlight($getDisplayText())"></span>
+	<span ng-switch on="data.isState">
+		<span ng-switch-when="true">
+		</span>
+		<span ng-switch-default>
+			- {{data.StateAbbv}}
+		</span>
+	</span>
+</div>

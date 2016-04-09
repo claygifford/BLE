@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h3 class="modal-title">Compose Message</h3>
+</div>
+<div class="modal-body" style="padding:0;">
+
+<!--     <form id="message-form" class="form-horizontal">
+        <div class="panel-body">
+            <textarea name="message" placeholder="Message" ng-model="SendMessage" rows="13" class="form-control"></textarea>
+        </div>
+    </form> -->
+
+    <form id="message-form" class="form-horizontal mar-top">
+        
+        <div class="panel-body" style="padding-top: 0px;">                
+            <div class="row form-group" style="padding-top: 20px;">                
+                <textarea name="message" rows="13" type="text" placeholder="Message" class="form-control" ng-model="message"></textarea>
+            </div>
+        </div>
+    </form>
+
+    <div class="panel-footer text-right">
+        <div class="box-inline">            
+        	<i class="fa fa-cog fa-lg"  ng-class="{'fa-spin' : actions.isBusy}" ng-show="actions.isBusy"></i>
+            <button type="button" class="previous btn btn-success" ng-click="sendMessage()">OK</button>
+            <button type="button" class="next btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

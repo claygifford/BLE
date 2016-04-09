@@ -1,0 +1,191 @@
+<script>
+	$('#update-account').formValidation({
+        framework: 'bootstrap',
+        icon: {
+        	valid: 'fa fa-check-circle fa-lg text-success',
+			invalid: 'fa fa-times-circle fa-lg',
+			validating: 'fa fa-refresh'
+        },
+		fields: {
+			password: {
+				validators: {
+					notEmpty: {
+						message: 'The Password is required'
+					},
+					identical: {
+						field: 'confirmPassword',
+						message: 'The Password and Confirm Password are not the same'
+					}
+				}
+			},
+			confirmPassword: {
+				validators: {
+					notEmpty: {
+						message: 'The Confirm Password is required'
+					},
+					identical: {
+						field: 'password',
+						message: 'The Password and Confirm Password are not the same'
+					}
+				}
+			},
+			name: {
+				validators: {
+					notEmpty: {
+						message: 'The Name is required'
+					}
+				}
+			},
+			phoneNumber: {
+				validators: {
+					regexp: {
+                        message: 'The phone number can only contain the digits, spaces, -, (, ), + and .',
+                        regexp: /^[0-9\s\-()+\.]+$/
+                    }
+				}
+			},
+			email: {
+				validators: {
+					notEmpty: {
+						message: 'The Email is required'
+					},
+					 emailAddress: {
+                            message: 'The input is not a valid email address'
+                    }
+				}
+			},
+		},
+	})
+	.on('err.field.fv', function(e, data) {
+ 		if (data.fv.getSubmitButton()) {
+ 			data.fv.disableSubmitButtons(false);
+ 	    }
+    })
+    .on('success.field.fv', function(e, data) {
+ 	    if (data.fv.getSubmitButton()) {
+    		data.fv.disableSubmitButtons(false);
+ 		}
+    })
+	.on('success.form.fv', function(e) {
+        e.preventDefault();
+        var element = $('#update-account');
+        var scope = angular.element(element).scope();
+        var fv = element.data('formValidation');
+        scope.updateAccount(fv);        
+    });
+
+</script>
+
+<div style="background-color: #e7ebee; position: relative;">
+
+	<div id="page-title">
+		<h1 class="page-header text-overflow">Profile</h1>
+	</div>
+	<div id="page-content">		
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="home-profile-header">
+					<h3 class="panel-title">Account</h3>
+					<button class="btn btn-default" style="margin-right:5px;" type="button" ng-click="toggleEdit()">
+						<i class="fa fa-pencil"></i>
+					</button>
+				</div>
+			</div>
+			<form class="form-horizontal" ng-hide="editMode">
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group">
+							<label class="col-md-3 control-label">Username</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.Username}}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Name</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.Name}}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Title</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.Title}}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Company</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.Company}}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Phone Number</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.PhoneNumber}}</p></div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-3 control-label">Email</label>
+							<div class="col-md-9"><p class="form-control-static">{{AppUser.Email}}</p></div>
+						</div>						
+					</div>
+				</div>
+			</form>
+
+			<form class="form-horizontal" ng-show="editMode" id="update-account" name="form">
+				<div class="panel-body">
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Username</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Username" name="username" ng-model="editAppUser.Username" disabled>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Name</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Name" name="name" ng-model="editAppUser.Name">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Password</label>
+						<div class="col-sm-6">
+							<input type="password" class="form-control" placeholder="Password" name="password" ng-model="editAppUser.Password">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Confirm Password</label>
+						<div class="col-sm-6">
+							<input type="password" class="form-control" placeholder="Confirm Password" name="confirmPassword" ng-model="editAppUser.ConfirmPassword">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Title</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Title" name="title" ng-model="editAppUser.Title">
+						</div>
+					</div>					
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Company</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Company" name="company" ng-model="editAppUser.Company">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Phone Number</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber" ng-model="editAppUser.PhoneNumber">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="demo-is-inputnormal" class="col-sm-3 control-label">Email</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" placeholder="Email" name="email" ng-model="editAppUser.Email">
+						</div>
+					</div>			
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-9 col-sm-offset-3">
+							<button class="btn btn-info" type="submit">Save</button>
+							<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>					
+	</div>
+</div>
+
+
+

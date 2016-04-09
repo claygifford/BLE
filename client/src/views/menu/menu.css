@@ -1,0 +1,264 @@
+/* NAVBAR
+/*====================================*/
+#navbar {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  background-color: #e7ebee;
+  left: 0;
+  top: 0;
+}
+#navbar-container {
+  box-shadow: 0 2px 0px -1px rgba(0, 0, 0, 0.05);
+}
+.navbar-header {
+  left: 0;
+  position: relative;
+  float: none;
+  /* background-color: #32404e; */
+  background-color: #FBB03B;
+}
+.navbar-content {
+  position: relative;
+  left: 0;
+  background-color: #ffffff;
+  padding: 0 8px;
+  box-shadow: inset -4px 0 0 0 #54abd9;
+}
+@media (min-width: 992px) {
+  .navbar-content {
+    padding: 0 13px;
+  }
+}
+/* BRAND LOGO & TEXT
+/*====================================*/
+.navbar-brand {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 0;
+  height: 70px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  /*width: 300px;*/
+}
+.navbar-brand:hover,
+.navbar-brand:focus {
+  color: #ffffff;
+}
+.brand-title,
+.brand-icon {
+  display: block;
+  line-height: 70px;
+}
+.brand-icon {
+  width: 70px;
+  height: 70px;
+  float: left;
+}
+.brand-text {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+}
+/* NAVBAR ICON & BUTTON */
+/*======================================*/
+.navbar-top-links > li {
+  float: left;
+}
+.navbar-top-links > li > a {
+  display: table-cell;
+  padding: 0 12px;
+  vertical-align: middle;
+  height: 70px;
+  color: #515151;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.navbar-top-links > li > a:focus {
+  background-color: transparent;
+}
+.navbar-top-links > li > a:hover {
+  background-color: #f2f2f2;
+  color: #2b2b2b;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.navbar-top-links > li > .active {
+  /* border-bottom: 5px solid #32404e; */
+  border-bottom: 5px solid #FBB03B;
+  -webkit-transition: all 4s;
+  transition: all 4s;
+}
+
+.navbar-top-links > li > .active > .username {
+  margin-bottom: -5px;
+}
+
+.navbar-top-links > .open > a,
+.navbar-top-links > .open > a:focus {
+  background-color: #f2f2f2;
+  color: #515151;
+}
+.navbar-top-links > .dropdown > .dropdown-menu,
+.navbar-top-links > .mega-dropdown > .dropdown-menu,
+.navbar-top-links > .dropdown > .dropdown-menu.head-list,
+.navbar-top-links > .mega-dropdown > .dropdown-menu.head-list {
+  margin-top: 10px;
+}
+.navbar-top-links .dropdown-menu .panel-body {
+  padding: 0;
+}
+.navbar-top-links .dropdown-menu .nano:not(.scrollable) {
+  max-height: 180px;
+}
+.navbar-top-links .dropdown-menu .nano:not(.scrollable) .nano-content {
+  position: static;
+}
+.navbar-top-links .tgl-menu-btn {
+  position: absolute;
+  top: -100%;
+  right: 0;
+}
+.navbar-top-links .tgl-menu-btn > a,
+.navbar-top-links .tgl-menu-btn > a:hover,
+.navbar-top-links .tgl-menu-btn > a:focus {
+  color: #ffffff;
+}
+.navbar-top-links .tgl-menu-btn > a:hover,
+.navbar-top-links .tgl-menu-btn a:focus {
+  background-color: transparent;
+}
+.navbar-top-links .head-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.navbar-top-links .head-list li a {
+  display: block;
+  padding: 10px 15px;
+  color: rgba(0, 0, 0, 0.6);
+  background: transparent;
+}
+.navbar-top-links .head-list li a:hover {
+  color: #000000;
+  background: rgba(0, 0, 0, 0.065);
+}
+.badge-header {
+  position: absolute;
+  font-size: .85em;
+  font-weight: normal;
+  top: 50%;
+  margin-top: -1.5em;
+  min-width: 1.85em;
+  padding: 3px 5px;
+  right: 3px;
+}
+.navbar-top-links .dropdown-menu .nano {
+  max-height: 265px;
+}
+/* DROPDOWN USER */
+/*======================================*/
+.img-user {
+  width: 32px;
+  height: 32px;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+.username {
+  float: right;
+  white-space: nowrap;
+  line-height: 50px;
+  margin: 0 10px;
+}
+/* NAVBAR RESPONSIVE */
+/*======================================*/
+@media (min-width: 768px) {
+  #dropdown-user > .dropdown-toggle img {
+    -webkit-transform: translateY(9px);
+    -ms-transform: translateY(9px);
+    transform: translateY(9px);
+  }
+  #navbar {
+    background-color: transparent;
+  }
+  .navbar-header {
+    float: left;
+    background-color: transparent;
+  }
+  .navbar-header:before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 70px;
+    /* background-color: #32404e; */
+	background-color: #FBB03B;
+  }
+  #container.mainnav-out .navbar-header:before {
+    width: 0;
+  }
+  #container.mainnav-in .navbar-header:before {
+    width: 100%;
+  }
+  #navbar-container {
+    background-color: #ffffff;
+  }
+  .navbar-content {
+    
+    background-color: transparent;
+  }
+  #navbar .brand-title {
+    padding: 0 1.5em 0 50px;
+  }
+  #container.mainnav-in .navbar-brand,
+  #container.mainnav-lg .navbar-brand,
+  #container.mainnav-in .brand-title,
+  #container.mainnav-lg .brand-title {
+    width: 280px;
+  }
+  #container.mainnav-in .brand-icon,
+  #container.mainnav-sm .brand-icon,
+  #container.mainnav-lg .brand-icon {
+    background-color: transparent;
+  }
+  #container.mainnav-in .brand-title,
+  #container.mainnav-sm .brand-title,
+  #container.mainnav-lg .brand-title {
+    color: #ffffff;
+  }
+  #container.effect .brand-title,
+  #container.effect.mainnav-in .brand-title,
+  #container.effect.mainnav-sm .brand-title,
+  #container.effect.mainnav-lg .brand-title {
+    -webkit-transition: color 0.35s;
+    transition: color 0.35s;
+  }
+  .navbar-middle {
+    position: static;
+  }
+  .navbar-top-links .tgl-menu-btn {
+    position: static;
+  }
+  .navbar-top-links .tgl-menu-btn > a,
+  .navbar-top-links .tgl-menu-btn > a:hover {
+    color: #515151;
+  }
+  .navbar-top-links .tgl-menu-btn > a:focus {
+    background-color: transparent;
+    color: #515151;
+  }
+}
+/* NAVBAR : FIXED */
+/*======================================*/
+#container.navbar-fixed > #navbar {
+  position: fixed;
+}
+#container.navbar-fixed > #navbar .shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+#container.navbar-fixed .navbar-top-links .dropdown-menu .nano > .nano-content {
+  position: absolute;
+}
+#container.navbar-fixed .navbar-top-links .dropdown-menu .nano {
+  max-height: 110px;
+}

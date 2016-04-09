@@ -1,0 +1,48 @@
+.main {
+	/*height: 100%;*/
+	/*min-height: 100%;*/
+	/*padding-top: 70px;*/
+	/*margin: 0 auto -30px;*/
+
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flexbox;      /* TWEENER - IE 10 */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;
+	flex: 1;
+
+    /*justify-content: center;*/
+}
+
+.site {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    height: 100%;
+}
+
+
+.site-header, .site-footer {
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    /*height:70px;*/
+}
+
+.site-header {
+    height: 70px;
+}
+
+
+.site-content {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+   /* padding-top: 70px;*/
+}

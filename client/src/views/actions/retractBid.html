@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h3 class="modal-title">Retract Bid</h3>
+</div>
+<div class="modal-body" style="padding:0;">
+
+
+    <form id="counter-form" class="form-horizontal mar-top" >
+        <hr class="hr-sm">
+        <div class="form-group">
+            <label class="col-lg-10 control-label">Are you sure you want to retract this bid?</label>
+        </div>
+    </form>
+    <div class="panel-footer text-right">
+        <div class="box-inline">            
+        	<i class="fa fa-cog fa-lg"  ng-class="{'fa-spin' : actions.isBusy}" ng-show="actions.isBusy"></i>
+            <button type="button" class="previous btn btn-success" ng-click="retract()">OK</button>
+            <button type="button" class="next btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

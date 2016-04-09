@@ -1,0 +1,56 @@
+.clickable {
+	cursor: pointer;
+}
+
+.full-height {
+	height: 100%;
+}
+
+
+.ble-list {
+ 	list-style: none;
+ 	padding: 0;
+}
+
+.ble-list > li {
+	position: relative;
+ 	padding: 15px 15px;
+	border-radius: 1px;
+ }
+ 
+ .ble-list > li:after {
+ 	content: '';
+ 	display: table;
+ 	clear: both;
+}
+
+.ble-list-unread a {
+	font-weight: 600;
+}
+
+/* COLORS */
+/*======================================*/
+.ble-list > li:nth-child(odd) {
+  background-color: rgba(0, 66, 78, 0.05);
+}
+/*.ble-list > li:hover {
+  background-color: rgba(0, 66, 78, 0.065);
+}
+.ble-list > li.highlight {
+  background-color: #f2f0c2;
+}*/
+.ble-list a,
+.ble-list a:focus {
+  display: block;
+  color: #515151;
+}
+.ble-star > a,
+.ble-star > a:focus {
+  color: #9e9e9e;
+}
+.ble-starred .mail-star > a {
+  color: #ffa100;
+}
+.ble-list .mail-star > a:hover {
+  color: #ffbd4d;
+}

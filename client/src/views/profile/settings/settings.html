@@ -1,0 +1,63 @@
+<div style="background-color: #e7ebee; position: relative;">
+
+	<div id="page-title">
+		<h1 class="page-header text-overflow">Settings</h1>
+	</div>
+	<div id="page-content">		
+		<div class="panel">
+			<div class="panel-heading">
+				<div class="home-profile-header">
+					<h3 class="panel-title">Email Notifications</h3>
+					<i class="fa fa-cog" ng-show="actions.isBusy" ng-class="{'fa-spin' : actions.isBusy}" style="margin-left: 5px; vertical-align: middle;" ></i>
+					<button class="btn btn-default" style="margin-right:5px;" type="button" ng-click="toggleEdit()">
+						<i class="fa fa-pencil"></i>
+					</button>					
+				</div>
+			</div>
+			<form class="form-horizontal" ng-hide="editMode">
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" readonly disabled ng-model="settings.GeneralEmail"> General Email</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" readonly disabled ng-model="settings.EveryListing"> Every Listing</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" readonly disabled ng-model="settings.SavedSearches"> Saved Searches</label>
+						</div>
+					</div>
+				</div>
+			</form>
+
+			<form class="form-horizontal" ng-show="editMode" id="update-account" name="form">
+				<div class="panel-body">
+					<div class="row">
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" ng-model="editSettings.GeneralEmail"> General Email</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" ng-model="editSettings.EveryListing"> Every Listing</label>
+						</div>
+						<div class="form-group">
+							<label class="col-md-9 col-md-offset-3 control-label" style="text-align: left;"><input type="checkbox" ng-model="editSettings.SavedSearches"> Saved Searches</label>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div class="row">
+						<div class="col-sm-9 col-sm-offset-3">
+							<button class="btn btn-info" type="submit" ng-click="updateSettings()">Save</button>
+							<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>					
+	</div>
+</div>
+</div>
+
+
+

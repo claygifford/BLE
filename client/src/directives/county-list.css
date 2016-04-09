@@ -1,0 +1,48 @@
+.county-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: block;
+}
+.county-list > .canvas {
+  /*background-color: #eee;*/
+  position: relative;
+}
+.renderer {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+  height: 30px;
+  line-height: 30px;
+}
+.renderer > span {
+  margin-left: 4px;
+}
+
+/*  .canvas {
+    background-color: #eee;
+    position: relative;
+  }
+ 
+  div.renderer {
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    position: absolute;
+    height: 30px;
+    line-height: 30px;
+ 
+    span {
+      margin-left: 10px;
+    }
+ 
+    &.selected {
+      background-color: #ccc;
+    }
+ 
+    &:hover {
+      background-color: #666;
+      color: white;
+    }
+  }
+}*/

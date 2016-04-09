@@ -1,0 +1,28 @@
+<div class="profile-container">
+	<div class="profile-menu">
+
+		<div class="pad-hor">
+			<h4 class="text-thin">Dashboard</h4>
+		</div>
+		<hr>
+		<div class="list-group bg-trans bord-no">
+			<a ng-click="goto('app.profile.home')" ng-class="{active: currentState() === 'app.profile.home' }" class="list-group-item clickable"><i class="fa fa-user fa-lg fa-fw"></i>&nbsp; Profile</a>
+		</div>
+		<hr>
+		<div class="list-group bg-trans">
+			<a ng-click="goto('app.profile.listings')" ng-class="{active: currentStateContains('app.profile.listings')}" class="list-group-item clickable"><span class="badge badge-primary pull-right">	{{ClientContext.Stats.Listings}}</span><i class="fa fa-lg fa-building"></i>&nbsp; My Listings</a>
+			<a ng-click="goto('app.profile.bids')" ng-class="{active: currentStateContains('app.profile.bids')}" class="list-group-item clickable"><span class="badge badge-primary pull-right">{{ClientContext.Stats.Bids}}</span><i class="fa fa-lg fa-file-text"></i>&nbsp; My Bids</a>
+			
+		</div>
+		<hr>
+		<div class="list-group bg-trans">
+			<a ng-click="goto('app.profile.settings')" ng-class="{active: currentState() === 'app.profile.settings' }" class="list-group-item clickable"><i class="fa fa-cog fa-lg fa-fw"></i>&nbsp; Settings</a>
+		</div>
+	</div>
+
+	<div class="profile-content">
+		<div ui-view="content" class="full-height"></div>
+	</div>
+
+</div>
+<div ui-view="footer" class="site-footer"></div>

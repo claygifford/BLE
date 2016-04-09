@@ -1,0 +1,137 @@
+.light-color {
+	color: rgb(255, 255, 255) !important;
+}
+.medium-color {
+	color: rgb(163, 177, 191) !important;
+}
+.fadeInDown {
+	animation-name: fadeInDown; -webkit-animation-name: fadeInDown;
+}
+.caption {
+	display: table-cell;
+}
+ .vertical-center.caption {
+	padding-bottom: 3vh; vertical-align: middle;
+}
+
+#hero .item {
+	background-position: center 55%; height: 61vh; background-size: cover; background-color: rgb(255, 255, 255); -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover;
+}
+#hero .btn {
+	margin-top: 35px;
+}
+#hero .btn-large {
+	padding: 15px 35px 17px; font-size: 16px;
+}
+#hero h1 {
+	line-height: 115%; letter-spacing: 0.03em; font-size: 38px;
+}
+#hero p {
+	line-height: 135%; font-size: 20px; margin-top: 15px;
+}
+#hero #owl-main .caption h1.light-bg {
+	font-size: 33px;
+}
+#hero #owl-main .caption h1.medium-bg {
+	font-size: 33px;
+}
+#hero #owl-main .caption h1.dark-bg {
+	font-size: 33px;
+}
+#hero #owl-main .caption h1.tint-bg {
+	font-size: 33px;
+}
+#hero .btn {
+	margin-top: 25px;
+}
+#hero .btn-large {
+	padding: 12px 30px 15px; font-size: 16px;
+}
+#hero .info {
+	margin-top: -25px;
+}
+#hero .info {
+	margin-top: -25px;
+}
+#hero .info {
+	margin-top: -25px;
+}
+#hero .items li .text-overlay .big.info p {
+	line-height: 140%; padding-top: 0px; font-size: 14px;
+}
+#hero .thumbs .thumb .text-overlay .big.info p {
+	line-height: 140%; padding-top: 0px; font-size: 14px;
+}
+#hero .owl-carousel .item .text-overlay .big.info p {
+	line-height: 140%; padding-top: 0px; font-size: 14px;
+}
+.owl-carousel .owl-wrapper::after {
+	height: 0px; line-height: 0; clear: both; display: block; visibility: hidden; content: ".";
+}
+.owl-carousel {
+	width: 100%; display: none; position: relative; -ms-touch-action: pan-y;
+}
+.owl-carousel .owl-wrapper {
+	display: none; position: relative; -webkit-transform: translate3d(0px, 0px, 0px);
+}
+.owl-carousel .owl-wrapper-outer {
+	width: 100%; overflow: hidden; position: relative;
+}
+.owl-carousel .autoHeight.owl-wrapper-outer {
+	transition:height 500ms ease-in-out; -webkit-transition: height 500ms ease-in-out; -o-transition: height 500ms ease-in-out; -moz-transition: height 500ms ease-in-out;
+}
+.owl-carousel .owl-item {
+	float: left;
+}
+.owl-controls .owl-page {
+	cursor: pointer;
+}
+.owl-controls .owl-buttons div {
+	cursor: pointer;
+}
+.owl-controls {
+	-ms-user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); -webkit-user-select: none; -moz-user-select: none; user-select: none; -khtml-user-select: none;
+}
+.grabbing {
+	
+}
+
+.owl-carousel .owl-wrapper {
+	transform: translate3d(0px, 0px, 0px); backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0); -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -moz-transform: translate3d(0, 0, 0);
+}
+.owl-carousel .owl-item {
+	transform: translate3d(0px, 0px, 0px); backface-visibility: hidden; -webkit-transform: translate3d(0, 0, 0); -webkit-backface-visibility: hidden; -moz-backface-visibility: hidden; -moz-transform: translate3d(0, 0, 0);
+}
+.owl-origin {
+	perspective: 1200px; -webkit-perspective: 1200px; -webkit-perspective-origin-x: 50%; -webkit-perspective-origin-y: 50%; -moz-perspective: 1200px; -moz-perspective-origin-x: 50%; -moz-perspective-origin-y: 50%;
+}
+.owl-fade-out {
+	animation:fadeOut 1s both; z-index: 10; -webkit-animation: fadeOut 1s both ease; -moz-animation: fadeOut 1s both ease;
+}
+.owl-fade-in {
+	animation:fadeIn 1s both; -webkit-animation: fadeIn 1s both ease; -moz-animation: fadeIn 1s both ease;
+}
+.owl-fadeInAfterOut-out {
+	animation:fadeOut 0.35s both; z-index: 10; -webkit-animation: fadeOut .35s both ease; -moz-animation: fadeOut .35s both ease;
+}
+.owl-fadeInAfterOut-in {
+	animation:fadeIn 0.35s 0.35s both; -webkit-animation: fadeIn .35s .35s both ease; -moz-animation: fadeIn .35s .35s both ease;
+}
+.owl-backSlide-out {
+	animation:backSlideOut 1s both; -webkit-animation: backSlideOut 1s both ease; -moz-animation: backSlideOut 1s both ease;
+}
+.owl-backSlide-in {
+	animation:backSlideIn 1s both; -webkit-animation: backSlideIn 1s both ease; -moz-animation: backSlideIn 1s both ease;
+}
+.owl-goDown-out {
+	animation:scaleToFade 0.7s both; -webkit-animation: scaleToFade .7s ease both; -moz-animation: scaleToFade .7s ease both;
+}
+.owl-goDown-in {
+	animation:goDown 0.6s both; -webkit-animation: goDown .6s ease both; -moz-animation: goDown .6s ease both;
+}
+.owl-fadeUp-in {
+	animation:scaleUpFrom 1s both; -webkit-animation: scaleUpFrom 1s ease both; -moz-animation: scaleUpFrom 1s ease both;
+}
+.owl-fadeUp-out {
+	animation:scaleUpTo 1s both; -webkit-animation: scaleUpTo 1s ease both; -moz-animation: scaleUpTo 1s ease both;
+}

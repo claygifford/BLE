@@ -1,0 +1,420 @@
+<script>
+	$('#sell-form').formValidation({
+        framework: 'bootstrap',
+        live: 'disabled',
+        icon: {
+        	valid: 'fa fa-check-circle fa-lg text-success',
+			invalid: 'fa fa-times-circle fa-lg',
+			validating: 'fa fa-refresh'        	
+        },
+		fields: {
+			agreeToTerms: {
+				validators: {
+					notEmpty: {
+						message: 'You must agree with the terms and conditions'
+					}
+				}
+			},
+			name: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a Name'
+					}
+				}
+			},
+			title: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a Title'
+					}
+				}
+			},
+			company: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a Company'
+					}
+				}
+			},
+			phoneNumber: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a Phone Number'
+					}
+				}
+			},
+			email: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter an Email Address'
+					}
+				}
+			},
+			facilityName: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a Facility Name'
+					}
+				}
+			},			
+			state: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a State'
+					}
+				}
+			},
+			county: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter a County'
+					}
+				}
+			},
+			numberOfBeds: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter the Number of Beds'
+					}
+				}
+			},
+			askingPricePerBed: {
+				validators: {
+					notEmpty: {
+						message: 'You must enter the Price/Bed'
+					}
+				}
+			}
+		}
+	});
+
+	$('#sell-wz').bootstrapWizard({
+		tabClass		: 'wz-classic',
+		nextSelector	: '.next',
+		previousSelector	: '.previous',
+		onTabClick: function(tab, navigation, index) {
+			return false;
+		},
+		onInit : function(){
+			//$('#sell-wz').find('.finish').hide().prop('disabled', true);
+		},
+		onNext: function(tab, navigation, index) {
+
+			switch(index) {
+			    case 1:
+			    	$('#sell-form').data('formValidation').validate();
+					var $valid = $('#sell-form').data('formValidation').isValid();
+					if (!$valid)
+						return false;
+			        break;
+			    case 2:
+			    	$('#sell-form').data('formValidation').validate();
+					var $valid = $('#sell-form').data('formValidation').isValid();
+					if (!$valid)
+						return false;
+			        break;
+			    case 3:
+			        break;
+				case 4:
+			        break;			        
+			    default:
+			}
+		},
+		onTabShow: function(tab, navigation, index) {
+			var $total = navigation.find('li').length;
+			var $current = index+1;
+			var $percent = ($current/$total) * 100;
+			var wdt = 100/$total;
+			var lft = wdt*index;
+			$('#sell-wz').find('.progress-bar').css({width:$percent+'%'});
+
+			switch($current) {
+			    case 1:
+			        var next = $('#sell-wz').find('.next');
+			        next.show();
+			        next.text('Next');
+			        $('#sell-wz').find('.previous').show();
+			        $('#sell-wz').find('.finish').hide();
+			        $('#sell-wz').find('.cancel').show();
+			        $('#sell-wz').find('.complete').hide();
+			        break;
+			    case 2:
+			        var next = $('#sell-wz').find('.next');
+			        next.show();
+			        next.text('Go to Summary');
+			        $('#sell-wz').find('.previous').show();
+			        $('#sell-wz').find('.finish').hide();
+			        $('#sell-wz').find('.cancel').show();
+			        $('#sell-wz').find('.complete').hide();
+			        break;
+			    case 3:
+			        $('#sell-wz').find('.next').hide();
+			        $('#sell-wz').find('.previous').show();
+			        $('#sell-wz').find('.finish').show();
+			        $('#sell-wz').find('.cancel').show();
+			        $('#sell-wz').find('.complete').hide();
+			        break;
+				case 4:
+			        $('#sell-wz').find('.next').hide();
+			        $('#sell-wz').find('.previous').hide();
+			        $('#sell-wz').find('.finish').hide();
+			        $('#sell-wz').find('.cancel').hide();
+			        $('#sell-wz').find('.complete').show();
+			        break;			        
+			    default:
+			}
+
+			// If it's the last tab then hide the last button and show the finish instead
+			// if($current >= $total) {
+			// 	$('#sell-wz').find('.next').hide();
+			// 	$('#sell-wz').find('.finish').show();
+			// 	$('#sell-wz').find('.finish').prop('disabled', false);
+			// } else {
+			// 	$('#sell-wz').find('.next').show();
+			// 	$('#sell-wz').find('.finish').hide().prop('disabled', true);
+			// }
+		},
+		onFinish: function(tab, navigation, index) {
+	        var element = $('#sell-wz');
+        	var scope = angular.element(element).scope();
+        	scope.submitListing();
+		}
+	});
+
+</script>
+<div class="site">
+	<div class="effect site-content">	
+		<div class="boxed">
+			<div id="page-title">
+				<h1 class="page-header text-overflow">Sell Beds</h1>
+			</div>
+			<div id="page-content">					
+				<div class="row">
+					<div class="col-lg-10 col-lg-offset-1">
+						<div class="panel">
+
+							<div id="sell-wz">
+								<ul class="wz-nav-off wz-icon-inline">
+									<li class="col-xs-3">
+										<a data-toggle="tab" href="#sell-wz-tab1">
+											<span class="icon-wrap icon-wrap-xs bg-danger" style="color: white;"><i class="fa fa-info"></i></span>
+											<p class="text-thin">Terms and Conditions</p>
+										</a>
+									</li>
+									<li class="col-xs-3">
+										<a data-toggle="tab" href="#sell-wz-tab2">
+											<span class="icon-wrap icon-wrap-xs bg-warning" style="color: white;"><i class="fa fa-building"></i></span>
+											<p class="text-thin">Listing</p>
+										</a>
+									</li>
+									<li class="col-xs-3">
+										<a data-toggle="tab" href="#sell-wz-tab3">
+											<span class="icon-wrap icon-wrap-xs bg-primary" style="color: white;"><i class="fa fa-file-text-o"></i></span>
+											<p class="text-thin">Summary</p>											
+										</a>
+									</li>
+									<li class="col-xs-3">
+										<a data-toggle="tab" href="#sell-wz-tab4">
+											<span class="icon-wrap icon-wrap-xs bg-success" style="color: white;"><i class="fa fa-check-square"></i></span>
+											<p class="text-thin">Finish</p>											
+										</a>
+									</li>
+								</ul>
+
+								<div class="progress progress-xs">
+									<div class="progress-bar progress-bar-blue"></div>
+								</div>
+
+								<form id="sell-form" class="form-horizontal mar-top">
+									<div class="panel-body" style="min-height: 400px;">
+										<div class="tab-content">
+
+											<div id="sell-wz-tab1" class="tab-pane">
+												
+											    <div class="form-group">
+											        <label class="col-xs-3 control-label">Terms of use</label>
+											        <div class="col-xs-8">
+											            <div style="border: 1px solid #e5e5e5; height: 200px; overflow: auto; padding: 10px;">
+											                <p>Agree that by listing the beds on our website, they will not pay any fees as the buyer is responsible for the fees.</p>
+											                <p>Agree that by listing the beds on our website, they will not pay any fees as the buyer is responsible for the fees.</p>
+											                <p>Agree that by listing the beds on our website, LBX will get the commission for the sale of the beds from whatever buyer buys the bed licenses, whether or not the buyer is found on our website or not.</p>
+											                <p>The seller understands that the name of the facility, the name of the parent company will all be confidential and not made known on the website.  It will only be visible once the seller accepts an offer from the buyer via documents after the offer is accepted.</p>
+											                <p>Natum oportere et qui, vis graeco tincidunt instructior an, autem elitr noster per et. Mea eu mundi qualisque. Quo nemore nusquam vituperata et, mea ut abhorreant deseruisse, cu nostrud postulant dissentias qui. Postea tincidunt vel eu.</p>
+											                <p>Ad eos alia inermis nominavi, eum nibh docendi definitionem no. Ius eu stet mucius nonumes, no mea facilis philosophia necessitatibus. Te eam vidit iisque legendos, vero meliore deserunt ius ea. An qui inimicus inciderint.</p>
+											            </div>
+											        </div>
+										        </div>
+										        <br>
+												<div class="form-group">
+													<div class="col-xs-6 col-xs-offset-3">
+														<div>
+											                <label>
+											                    <input type="checkbox" name="agreeToTerms" value="agree" ng-model="listing.agreeToTerms"/> I agree to these terms and conditions
+											                </label>
+											            </div>
+													</div>
+												</div>
+												
+											</div>
+
+											<div id="sell-wz-tab2" class="tab-pane fade">
+												<p class="text-semibold">Your confidentiality is important. Your listing will appear with a limited amount of information: number of beds listed, asking price per bed and the County and State.</p>
+												<div style="display: flex; ">
+													<div class="panel-body" style="height: 100%; width: 50%;">
+														<div class="home-profile-header">
+															Seller Information				
+														</div>
+														<hr class="hr-sm">
+														<p class="text-semibold">This information will NOT appear on the listing</p>
+														<form class="form-horizontal">
+															<div class="panel-body">
+																<div class="row">
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Name</label>
+																		<div class="col-md-7"><input type="text" placeholder="Name" name="name" class="form-control" ng-model="account.Name"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Title</label>
+																		<div class="col-md-7"><input type="text" placeholder="Title" name="title" class="form-control" ng-model="account.Title"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Company</label>
+																		<div class="col-md-7"><input type="text" placeholder="Company" name="company" class="form-control" ng-model="account.Company"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Phone Number</label>
+																		<div class="col-md-7"><input type="text" placeholder="Phone Number" name="phoneNumber" class="form-control" ng-model="account.PhoneNumber"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Email Address</label>
+																		<div class="col-md-7"><input type="text" placeholder="Email" name="email" class="form-control" ng-model="account.Email"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-5 control-label">Name of Facility Selling Bed Licenses</label>
+																		<div class="col-md-7">
+																			<input type="text" ng-model="account.Facility" placeholder="Name" uib-typeahead="company as company.Display for company in getCompanies($viewValue)" typeahead-loading="loadingLocations" typeahead-no-results="noResults" class="form-control">
+																		    <i ng-show="loadingLocations" class="fa fa-cog fa-spin"></i>
+																		    <div ng-show="noResults">
+																		      <i class="fa fa-times"></i> No Results Found
+																		    </div>
+																		</div>
+																	</div>							
+																</div>
+															</div>
+														</form>
+													</div>
+													<div class="panel-body" style="height: 100%; width: 50%;">
+														<div class="home-profile-header">
+															Listing Details				
+														</div>
+														<hr class="hr-sm">
+														<form class="form-horizontal">
+															<div class="panel-body">
+																<div class="row">
+																	<div class="form-group">
+																		<label class="col-md-2 control-label">State</label>
+																		<div class="col-md-7"><input type="text" name="state" ng-model="listing.StateObject" uib-typeahead="state as state.name for state in filter.states | filter:$viewValue | limitTo:8" class="form-control"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-2 control-label">County</label>
+																		<div class="col-md-7"><input type="text" name="county" ng-model="listing.CountyObject" uib-typeahead="county as county.name for county in filter.counties | filter:$viewValue | limitTo:8" class="form-control"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-2 control-label">Number of Beds</label>
+																		<div class="col-md-7"><input type="text" placeholder="Number of beds" name="numberOfBeds" class="form-control" ng-model="listing.NumberOfBeds"></div>
+																	</div>
+																	<div class="form-group">
+																		<label class="col-md-2 control-label">Price/Bed</label>
+																		<div class="col-md-7"><input type="text" placeholder="Price/Bed" name="askingPricePerBed" class="form-control" ng-model="listing.AskingPricePerBed"></div>
+																	</div>
+																	<div class="form-group">
+																		<div class="col-md-7 col-md-offset-2"><label><input type="checkbox" name="realEstateIncluded" value="agree" ng-model="listing.realEstateIncluded"/> Real Estate Included</label></div>
+																		<div class="col-md-7 col-md-offset-2">If selling Real Estate with Bed Licenses, check this box.</div>
+																	</div>		
+																</div>
+															</div>
+														</form>
+													</div>
+												</div>							
+											</div>
+
+											<div id="sell-wz-tab3" class="tab-pane">
+												<div class="row">
+													<h4 class="col-md-8 col-md-offset-2">The information listed below will be displayed in your listing. Please review.</h4>
+												</div>
+												<div class="row">
+													<label class="col-lg-4" style="text-align: right;">State:</label>
+													<div class="col-lg-7" style="text-align: left;"><b>{{listing.State}}</b></div>
+												</div>
+												<div class="row">
+													<label class="col-lg-4" style="text-align: right;">County:</label>
+													<div class="col-lg-7" style="text-align: left;"><b>{{listing.County}}</b></div>
+												</div>
+												<div class="row">
+													<label class="col-lg-4" style="text-align: right;">Number of Beds:</label>
+													<div class="col-lg-7" style="text-align: left;"><b>{{listing.NumberOfBeds | number:0}}</b></div>
+												</div>
+												<div class="row">
+													<label class="col-lg-4" style="text-align: right;">Asking Price/Bed:</label>
+													<div class="col-lg-7" style="text-align: left;"><b>{{listing.AskingPricePerBed | currency}}</b></div>
+												</div>
+												<div class="row" ng-show="listing.realEstateIncluded">
+													<div class="col-lg-7 col-lg-offset-4" style="text-align: left;"><b>Real Estate Included</b></div>
+												</div>
+												<br>
+												<div class="row">
+													<label class="col-lg-4" style="text-align: right;">Estimated Proceeds:</label>
+													<div class="col-lg-7" style="text-align: left;"><b>{{listing.Price | currency}}</b></div>
+												</div>
+												<br>
+												<div class="row">
+													<label class="col-md-8 col-md-offset-2">Buyer is responsible for Bed License Exchange fees.</label>
+												</div>
+
+												<div style="display: flex; flex-direction: column;" ng-show="actions.isBusy"> 
+													<div style="display: flex; align-items: center; justify-content: center; height: 200px;">
+														<i class="fa fa-cog fa-3x"  ng-class="{'fa-spin' : actions.isBusy}"></i>
+														<h3 style="margin-left: 10px; padding-bottom:10px;">Creating Listing...</h3>
+													</div>																				
+												</div>
+											</div>
+
+											<div id="sell-wz-tab4" class="tab-pane">
+												<div class="row">
+													<h4 class="col-md-8 col-md-offset-2">Thank you for listing with Bed License Exchange!</h4>
+												</div>
+												<div class="row">
+													<p class="col-md-8 col-md-offset-2">Your listing can now be seen by motivated buyers.</p>
+												</div>
+												<div class="row">
+													<p class="col-md-8 col-md-offset-2">You will be notified once a bid has been submitted.</p>
+												</div>
+												<div class="row">
+													<p class="col-md-8 col-md-offset-2">Please check the status of your listing under <a ui-sref="app.profile.listings">My Account</a></p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="panel-footer text-right">
+										<div class="box-inline">
+											<button type="button" class="previous btn btn-primary">Previous</button>
+											<button type="button" class="next btn btn-primary">Next</button>											
+											<button type="button" class="finish btn btn-success" ng-click="submit()">Submit</button>
+											<button type="button" class="cancel btn btn-primary" ng-click="cancel()">Cancel</button>
+											<button type="button" class="complete btn btn-primary" ng-click="close()">Close</button>
+										</div>
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div ui-view="footer" class="site-footer"></div>
+</div>

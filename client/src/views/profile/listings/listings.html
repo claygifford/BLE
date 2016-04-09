@@ -1,0 +1,51 @@
+
+<div style="height: 100%; background-color: #e7ebee; position: relative;">
+	<div id="page-title">
+		<h1 class="page-header text-overflow">My Listings</h1>
+	</div>
+	<div id="page-content" style="height: calc(100% - 60px);">
+		
+		<div class="panel panel-default panel-left" style="height:100%;">
+			<div class="panel-body" style="height: calc(100% - 20px);">
+				<div class="row">
+					<div class="col-sm-7">
+		
+						<button class="btn btn-default" type="button" ng-click="loadData()">
+							<i class="fa fa-refresh"></i>
+						</button>
+						<i class="fa fa-cog" ng-show="actions.isBusy" ng-class="{'fa-spin' : actions.isBusy}" style="margin-left: 5px; vertical-align: middle;" ></i>
+					</div>
+					<hr class="hr-sm visible-xs">
+				</div>
+				<hr class="hr-sm">
+				
+				<ul class="ble-list" style="height: calc(100% - 20px); overflow-y: auto;">
+					<li ng-repeat="listing in listings track by listing.Id">
+						<div class="clickable" style="display: flex; flex-wrap: nowrap; align-items: center; margin-bottom: 5px;" ng-click="listing.toggleDetails=!listing.toggleDetails">
+							<div><i class="fa fa-angle-right" ng-class="{'fa-angle-down': listing.toggleDetails}"></i></div>
+							<div style="margin-left: 20px;" ng-if="listing.Status == 7"><div class="label label-primary">Retracted</div></div>
+							<div class="mail-time" style="margin-left: 20px;">{{listing.CreatedOn | date:'medium'}}</div>
+							<div style="margin-left: 20px;">{{listing.NumberOfBeds | number:0}} | {{listing.AskingPricePerBed | currency}}</div>
+							<div style="margin-left: 20px;">{{listing.County}}, {{listing.State}}</div>
+							<div style="margin-left: 20px;"><span class="badge badge-primary pull-right">{{listing.BidCount}}</span></div>
+							<div style="margin-left: auto;" ng-if="listing.Status != 7">								
+								<button type="button" class="btn btn-primary" ng-click="retractListing(listing);$event.stopPropagation()">Retract This Listing</button>
+							</div>
+						</div>
+						<ul class="ble-list" ng-show="listing.toggleDetails" ng-repeat="bid in listing.Bids track by bid.Id">
+			                <li style="cursor: pointer; display: flex; flex-wrap: nowrap; align-items: center;" ng-click="listingDetails(listing, bid)">
+								<div class="label label-table" ng-class="getStatusClass(bid)">{{bid.SellerStatus}}</div>
+								<div class="mail-time" style="margin-left: 20px;">{{bid.CreatedOn | date:'medium'}}</div>
+								<div style="margin-left: 20px;" ng-if="bid.Status != 10">{{bid.NumberOfBeds}} | {{bid.PricePerBed | currency}}</div>
+								<div style="margin-left: 20px;" ng-if="bid.Status != 10">{{bid.County}}, {{bid.State}}</div>		
+							</li>
+			            </ul>		
+					</li>
+				</ul>
+			</div>
+		
+			<div class="panel-footer clearfix">
+			</div>
+		</div>					
+	</div>
+</div>

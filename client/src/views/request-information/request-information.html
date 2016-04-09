@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="cancel()"> <span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h3 class="modal-title">Request Information</h3>
+</div>
+<div class="modal-body" style="padding:0;">
+    
+    <form id="request-form" class="form-horizontal mar-top">
+        
+        <div class="panel-body" style="padding-top: 0px;">                
+            <p class="text-semibold">The message is regarding the listing below</p>
+            <div class="row">
+                <label class="col-lg-5" style="text-align: right;">State</label>
+                <div class="col-lg-6" style="text-align: left;"><b>{{listing.State}}</b></div>
+            </div>
+            <div class="row">
+                <label class="col-lg-5" style="text-align: right;">County</label>
+                <div class="col-lg-6" style="text-align: left;"><b>{{listing.County}}</b></div>
+            </div>
+            <div class="row">
+                <label class="col-lg-5" style="text-align: right;">Number of Bed Licenses</label>
+                <div class="col-lg-6" style="text-align: left;"><b>{{listing.NumberOfBeds | number:0}}</b></div>
+            </div>
+            <div class="row">
+                <label class="col-lg-5" style="text-align: right;">Price/Bed</label>
+                <div class="col-lg-6" style="text-align: left;"><b>{{listing.AskingPricePerBed | currency}}</b></div>
+            </div>
+            <div class="row" ng-show="listing.RealEstateIncluded">
+                <div class="col-lg-7 col-lg-offset-4" style="text-align: left;"><b>Real Estate Included</b></div>
+            </div>
+            <hr class="hr-sm">
+            <div class="row form-group" style="padding-top: 20px;">                
+                <textarea name="message" rows="13" type="text" placeholder="Message to Seller" class="form-control" ng-model="request.Message"></textarea>
+            </div>
+        </div>
+    </form>
+    <div class="panel-footer text-right">
+        <div class="box-inline">
+            <i class="fa fa-cog fa-lg"  ng-class="{'fa-spin' : actions.isBusy}" ng-show="actions.isBusy"></i>                                        
+            <button type="button" class="btn btn-success" ng-click="submit()">Submit</button>
+            <button type="button" class="btn btn-primary" ng-click="cancel()">Cancel</button>
+        </div>
+    </div>
+</div>

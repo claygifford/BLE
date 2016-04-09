@@ -1,0 +1,21 @@
+.profile-container {
+	height:calc(100% - 30px);
+	position: relative;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+ 	display: -webkit-flex;     /* NEW - Chrome */
+  	display: flex;
+}
+
+.profile-content {
+	height:100%;
+	width: calc(100% - 300px);
+}
+
+.profile-menu {
+	height:100%;
+	width:300px;
+	overflow-y: auto;
+	background-color: white;
+}

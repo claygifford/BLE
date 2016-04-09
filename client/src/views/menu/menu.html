@@ -1,0 +1,97 @@
+<header id="navbar">
+	<div id="navbar-container" class="boxed navbar-fixed-top">
+		<div class="navbar-content clearfix">
+			<ul class="nav navbar-top-links pull-left">
+
+				<div class="navbar-header">
+					<a style="cursor: pointer;" ng-click="goto('app.home')" class="navbar-brand">
+						<img src="img/lbx-brand.png" alt="Bed License Exchange" class="brand-icon">
+						<div class="brand-title">
+							<span class="brand-text">Bed License Exchange</span>
+						</div>
+					</a>
+				</div>					
+
+				<li class="dropdown" style="cursor: pointer;" >
+					<a class="dropdown-toggle" ng-click="goto('app.home')" ng-class="{active: currentState() === 'app.home' }">
+						<div class="username hidden-xs">Home</div>
+					</a>
+				</li>
+
+				<li class="dropdown" style="cursor: pointer;">
+					<a class="dropdown-toggle" ng-click="goto('app.buy')" ng-class="{active: currentState() === 'app.buy' }">
+						<div class="username hidden-xs">Buy Beds</div>
+					</a>
+				</li>
+
+				<li class="dropdown" style="cursor: pointer;">
+					<a class="dropdown-toggle" ng-click="goto('app.sell')" ng-class="{active: currentState() === 'app.sell' }">
+						<div class="username hidden-xs">Sell Beds</div>
+					</a>
+				</li>
+
+				<li class="dropdown" style="cursor: pointer;">
+					<a class="dropdown-toggle" ng-click="goto('app.how-it-works')"  ng-class="{active: currentState() === 'app.how-it-works' }">
+						<div class="username hidden-xs">How it works</div>
+					</a>
+				</li>
+				
+				<li class="dropdown" style="cursor: pointer;">
+					<a class="dropdown-toggle" ng-click="goto('app.contact-us')" ng-class="{active: currentState() === 'app.contact-us' }">
+						<div class="username hidden-xs">Contact Us</div>
+					</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-top-links pull-right">
+				<div ng-hide="ClientContext.isLoggedIn" style="line-height: 70px;">
+					<a style="color: #337ab7;" ng-click="goto('app.sign-in')" class="clickable">Sign In</a> or <a style="color: #337ab7; cursor: pointer;" ng-click="goto('app.register')">Join</a>
+				</div>
+				<li id="dropdown-user" class="dropdown" ng-show="ClientContext.isLoggedIn">
+					<a data-toggle="dropdown" class="dropdown-toggle text-right clickable">
+						<span class="pull-right">
+							<img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">
+						</span>
+						<div class="username hidden-xs">{{ClientContext.AppUser.Name}}</div>
+					</a>
+
+
+					<div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default" >
+
+						<div class="pad-all bord-btm">
+							<p class="text-lg text-muted text-thin mar-btm">{{ClientContext.AppUser.Name}}</p>									
+						</div>
+						<ul class="head-list">
+							<li>
+								<a ng-click="goto('app.profile.home')" class="clickable">
+									<i class="fa fa-fw fa-lg fa-user"></i> Profile
+								</a>
+							</li>							
+							<li>
+								<a ng-click="goto('app.profile.listings')" class="clickable">
+									<span class="badge badge-primary pull-right">{{ClientContext.Stats.Listings}}</span>
+									<i class="fa fa-fw fa-lg fa-building"></i> My Listings
+								</a>
+							</li>
+							<li>
+								<a ng-click="goto('app.profile.bids')" class="clickable">
+									<span class="badge badge-primary pull-right">{{ClientContext.Stats.Bids}}</span>
+									<i class="fa fa-fw fa-lg fa-file-text"></i> My Bids
+								</a>
+							</li>							
+							<li>
+								<a ng-click="goto('app.profile.settings')" class="clickable">
+									<i class="fa fa-fw fa-lg fa-gear"></i> Settings
+								</a>
+							</li>
+						</ul>
+						<div class="pad-all text-right">
+							<a class="btn btn-primary" ng-click="signOut()">
+								<i class="fa fa-sign-out fa-fw"></i> Logout
+							</a>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>

@@ -1,0 +1,258 @@
+[
+  {
+	  "StateName": "Alabama",
+	  "StateFIP": 1,
+	  "StateAbbv": "AL"
+  },
+  {
+	  "StateName": "Alaska",
+	  "StateFIP": 2,
+	  "StateAbbv": "AK"
+  },
+  {
+	  "StateName": "Arizona",
+	  "StateFIP": 4,
+	  "StateAbbv": "AZ"
+  },
+  {
+	  "StateName": "Arkansas",
+	  "StateFIP": 5,
+	  "StateAbbv": "AR"
+  },
+  {
+	  "StateName": "California",
+	  "StateFIP": 6,
+	  "StateAbbv": "CA"
+  },
+  {
+	  "StateName": "Colorado",
+	  "StateFIP": 8,
+	  "StateAbbv": "CO"
+  },
+  {
+	  "StateName": "Connecticut",
+	  "StateFIP": 9,
+	  "StateAbbv": "CT"
+  },
+  {
+	  "StateName": "Delaware",
+	  "StateFIP": 10,
+	  "StateAbbv": "DE"
+  },
+  {
+	  "StateName": "District of Columbia",
+	  "StateFIP": 11,
+	  "StateAbbv": "DC"
+  },
+  {
+	  "StateName": "Florida",
+	  "StateFIP": 12,
+	  "StateAbbv": "FL"
+  },
+  {
+	  "StateName": "Georgia",
+	  "StateFIP": 13,
+	  "StateAbbv": "GA"
+  },
+  {
+	  "StateName": "Hawaii",
+	  "StateFIP": 15,
+	  "StateAbbv": "HI"
+  },
+  {
+	  "StateName": "Idaho",
+	  "StateFIP": 16,
+	  "StateAbbv": "ID"
+  },
+  {
+	  "StateName": "Illinois",
+	  "StateFIP": 17,
+	  "StateAbbv": "IL"
+  },
+  {
+	  "StateName": "Indiana",
+	  "StateFIP": 18,
+	  "StateAbbv": "IN"
+  },
+  {
+	  "StateName": "Iowa",
+	  "StateFIP": 19,
+	  "StateAbbv": "IA"
+  },
+  {
+	  "StateName": "Kansas",
+	  "StateFIP": 20,
+	  "StateAbbv": "KS"
+  },
+  {
+	  "StateName": "Kentucky",
+	  "StateFIP": 21,
+	  "StateAbbv": "KY"
+  },
+  {
+	  "StateName": "Louisiana",
+	  "StateFIP": 22,
+	  "StateAbbv": "LA"
+  },
+  {
+	  "StateName": "Maine",
+	  "StateFIP": 23,
+	  "StateAbbv": "ME"
+  },  
+  {
+	  "StateName": "Maryland",
+	  "StateFIP": 24,
+	  "StateAbbv": "MD"
+  },
+  {
+	  "StateName": "Massachusetts",
+	  "StateFIP": 25,
+	  "StateAbbv": "MA"
+  },
+  {
+	  "StateName": "Michigan",
+	  "StateFIP": 26,
+	  "StateAbbv": "MI"
+  },
+  {
+	  "StateName": "Minnesota",
+	  "StateFIP": 27,
+	  "StateAbbv": "MN"
+  },
+  {
+	  "StateName": "Mississippi",
+	  "StateFIP": 28,
+	  "StateAbbv": "MS"
+  },
+  {
+	  "StateName": "Missouri",
+	  "StateFIP": 29,
+	  "StateAbbv": "MO"
+  },
+  {
+	  "StateName": "Montana",
+	  "StateFIP": 30,
+	  "StateAbbv": "MT"
+  },
+  {
+	  "StateName": "Nebraska",
+	  "StateFIP": 31,
+	  "StateAbbv": "NE"
+  },
+  {
+	  "StateName": "Nevada",
+	  "StateFIP": 32,
+	  "StateAbbv": "NV"
+  },
+  {
+	  "StateName": "New Hampshire",
+	  "StateFIP": 33,
+	  "StateAbbv": "NH"
+  },
+  {
+	  "StateName": "New Jersey",
+	  "StateFIP": 34,
+	  "StateAbbv": "NJ"
+  },
+  {
+	  "StateName": "New Mexico",
+	  "StateFIP": 35,
+	  "StateAbbv": "NM"
+  },  
+  {
+	  "StateName": "New York",
+	  "StateFIP": 36,
+	  "StateAbbv": "NY"
+  },
+  {
+	  "StateName": "North Carolina",
+	  "StateFIP": 37,
+	  "StateAbbv": "NC"
+  },
+  {
+	  "StateName": "North Dakota",
+	  "StateFIP": 38,
+	  "StateAbbv": "ND"
+  },
+  {
+	  "StateName": "Ohio",
+	  "StateFIP": 39,
+	  "StateAbbv": "OH"
+  },
+  {
+	  "StateName": "Oklahoma",
+	  "StateFIP": 40,
+	  "StateAbbv": "OK"
+  },
+  {
+	  "StateName": "Oregon",
+	  "StateFIP": 41,
+	  "StateAbbv": "OR"
+  },
+  {
+	  "StateName": "Pennsylvania",
+	  "StateFIP": 42,
+	  "StateAbbv": "PA"
+  },
+  {
+	  "StateName": "Rhode Island",
+	  "StateFIP": 44,
+	  "StateAbbv": "RI"
+  },
+  {
+	  "StateName": "South Carolina",
+	  "StateFIP": 45,
+	  "StateAbbv": "SC"
+  },
+  {
+	  "StateName": "South Dakota",
+	  "StateFIP": 46,
+	  "StateAbbv": "SD"
+  },
+  {
+	  "StateName": "Tennessee",
+	  "StateFIP": 47,
+	  "StateAbbv": "TN"
+  },
+  {
+	  "StateName": "Texas",
+	  "StateFIP": 48,
+	  "StateAbbv": "TX"
+  },
+  {
+	  "StateName": "Utah",
+	  "StateFIP": 49,
+	  "StateAbbv": "UT"
+  },
+  {
+	  "StateName": "Vermont",
+	  "StateFIP": 50,
+	  "StateAbbv": "VT"
+  },
+  {
+	  "StateName": "Virginia",
+	  "StateFIP": 51,
+	  "StateAbbv": "VA"
+  },
+  {
+	  "StateName": "Washington",
+	  "StateFIP": 53,
+	  "StateAbbv": "WA"
+  },  
+
+  {
+	  "StateName": "West Virginia",
+	  "StateFIP": 54,
+	  "StateAbbv": "WV"
+  },
+  {
+	  "StateName": "Wisconsin",
+	  "StateFIP": 55,
+	  "StateAbbv": "WI"
+  },
+  {
+	  "StateName": "Wyoming",
+	  "StateFIP": 56,
+	  "StateAbbv": "WY"
+  }
+]

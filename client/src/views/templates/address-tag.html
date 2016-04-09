@@ -1,0 +1,11 @@
+<div class="tag-template">
+	<span>{{$getDisplayText()}}</span>
+	<span ng-switch on="data.isState">
+		<span ng-switch-when="true">
+		</span>
+		<span ng-switch-default>
+			- {{data.StateAbbv}}
+		</span>
+	</span>
+	<i class="fa fa-times-circle" style="cursor:pointer;" ng-click="$removeTag()"></i>
+</div>
